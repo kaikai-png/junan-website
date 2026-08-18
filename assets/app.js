@@ -15,21 +15,47 @@ const siteData = {
       subtitle: '产地溯源案例',
       image: 'assets/images/shanzha-base.png',
       intro: '以费县红山前山楂种植集群为案例，呈现基地实景、产地信息与种植管理的可视化展示。',
-      tags: ['山楂', '山东费县', '基地实景']
+      tags: ['山楂', '山东费县', '基地实景'],
+      gallery: [
+        'assets/images/shanzha-1.jpg',
+        'assets/images/shanzha-2.jpg',
+        'assets/images/shanzha-3.png'
+      ]
     },
     danshen: {
       name: '莱芜白花丹参种植基地',
       subtitle: '道地药材案例',
       image: 'assets/images/danshen-base.png',
       intro: '以莱芜白花丹参种植基地为案例，展示中药材从种植环境到田间管理的信息承载方式。',
-      tags: ['白花丹参', '山东莱芜', '种植管理']
+      tags: ['白花丹参', '山东莱芜', '种植管理'],
+      gallery: [
+        'assets/images/danshen-1.jpg',
+        'assets/images/danshen-2.jpg',
+        'assets/images/danshen-3.png'
+      ]
     },
     peony: {
       name: '菏泽精品芍药基地',
       subtitle: '精品药材案例',
       image: 'assets/images/peony-base.jpg',
       intro: '以菏泽精品芍药基地为案例，展示芍药种植、品种和基地实景素材的标准化归集。',
-      tags: ['芍药', '山东菏泽', '品种展示']
+      tags: ['芍药', '山东菏泽', '品种展示'],
+      gallery: [
+        'assets/images/peony-1.jpg',
+        'assets/images/peony-2.jpg',
+        'assets/images/peony-3.png'
+      ]
+    },
+    mudan: {
+      name: '菏泽孔庄牡丹基地',
+      subtitle: '花木产地案例',
+      image: 'assets/images/mudan-base.jpg',
+      intro: '位于菏泽市牡丹区黄堽镇孔庄，以牡丹种植为案例，呈现产地信息与基地实景的持续归集。',
+      tags: ['牡丹', '山东菏泽', '牡丹区'],
+      gallery: [
+        'assets/images/mudan-1.jpg',
+        'assets/images/mudan-2.jpg'
+      ]
     }
   }
 };
@@ -70,10 +96,13 @@ function renderBaseDetail() {
     target.innerHTML = `<section class="empty-state"><p class="eyebrow">BASE PROFILE</p><h1>该基地资料正在完善中</h1><p>更多优质中药材基地将持续入驻。</p><a class="button button-primary" href="bases.html">返回入驻基地</a></section>`;
     return;
   }
+  const gallery = (base.gallery && base.gallery.length)
+    ? `<div class="shell gallery">${base.gallery.map(img => `<img src="${img}" alt="${base.name}实景">`).join('')}</div>`
+    : `<div class="shell gallery"><div class="gallery-placeholder"><p class="eyebrow">IMAGES COMING</p><p>该基地图片资料正在持续完善中。</p></div></div>`;
   target.innerHTML = `
     <section class="detail-hero" style="background-image:url('${base.image}')"><div class="image-shade"></div><div class="shell detail-hero-content"><p class="eyebrow">${base.subtitle}</p><h1>${base.name}</h1><p>${base.intro}</p></div></section>
     <section class="section"><div class="shell detail-grid"><div><p class="eyebrow">BASE OVERVIEW</p><h2>基地信息</h2><p class="lead">入驻基地信息将以真实产地、品种与种植实景为基础持续完善，帮助产业合作方高效了解基地情况。</p><div class="tag-row">${base.tags.map(tag => `<span>${tag}</span>`).join('')}</div></div><aside class="fact-panel"><strong>服务关注点</strong><p>产地信息归集</p><p>种植过程展示</p><p>品质协同管理</p></aside></div></section>
-    <section class="section section-alt"><div class="shell section-heading"><p class="eyebrow">FIELD GALLERY</p><h2>基地实景</h2><p>以下图片来自基地提供的公开展示素材。</p></div><div class="shell gallery"><img src="${base.image}" alt="${base.name}实景"><img src="assets/images/peony-detail.jpg" alt="中药材种植实景"></div></section>
+    <section class="section section-alt"><div class="shell section-heading"><p class="eyebrow">FIELD GALLERY</p><h2>基地实景</h2><p>以下图片来自基地提供的公开展示素材。</p></div>${gallery}</section>
     <section class="consult-strip"><div class="shell"><div><p class="eyebrow">COOPERATION</p><h2>了解入驻与合作方式</h2></div><a class="button button-light" href="tel:${siteData.phone}">致电咨询</a></div></section>`;
 }
 

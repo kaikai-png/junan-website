@@ -10,6 +10,7 @@
   --muted: #66766f;
   --white: #ffffff;
   --shell: 1160px;
+  --shell-wide: 1360px;
 }
 
 * {
@@ -317,14 +318,35 @@ img {
 }
 
 .service-card {
+  position: relative;
   min-height: 230px;
-  padding: 25px;
+  padding: 30px 25px 25px;
   border: 1px solid var(--line);
-  background: var(--white);
+  background: linear-gradient(180deg, #f5f9f4 0%, var(--white) 60%);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--green) 0%, var(--lime) 100%);
+  opacity: 0.85;
+  transition: opacity 220ms ease;
 }
 
 .service-card:hover {
   border-color: var(--green);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(8, 45, 36, 0.14);
+}
+
+.service-card:hover::before {
+  opacity: 1;
 }
 
 .service-number {
@@ -358,7 +380,7 @@ img {
 
 .base-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -1097,5 +1119,56 @@ img {
 
   .contact-card > a {
     font-size: 24px;
+  }
+}
+
+/* === Gallery placeholder (defensive fallback when base.gallery is empty) === */
+.gallery-placeholder {
+  grid-column: 1 / -1;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px dashed var(--line);
+  background: var(--mist);
+  color: var(--muted);
+  text-align: center;
+  padding: 32px;
+}
+
+.gallery-placeholder .eyebrow {
+  margin: 0;
+  color: var(--green);
+}
+
+.gallery-placeholder p:not(.eyebrow) {
+  margin: 0;
+  font-size: 15px;
+}
+
+/* === Pending card as full-width "more coming" banner when trailing (only for .large 2-col grid on bases.html) === */
+.base-grid.large > .base-card.pending:last-child {
+  grid-column: 1 / -1;
+  min-height: 220px;
+}
+
+/* === Wider section variant for selected homepage sections === */
+.section-wide .shell {
+  width: min(var(--shell-wide), calc(100% - 48px));
+}
+
+.section-wide .section-heading {
+  max-width: 920px;
+}
+
+.section-wide .split-content {
+  max-width: 640px;
+}
+
+@media (max-width: 980px) {
+  .section-wide .shell {
+    width: min(var(--shell-wide), calc(100% - 32px));
   }
 }
