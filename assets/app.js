@@ -70,7 +70,7 @@ function renderShell() {
   document.querySelector('[data-site-header]').innerHTML = `
     <header class="site-header">
       <div class="shell header-inner">
-        <a class="brand" href="index.html" aria-label="君安医疗科技首页"><span class="brand-mark">J</span><span>君安医疗科技<small>JUNAN MEDICAL TECHNOLOGY</small></span></a>
+        <a class="brand" href="index.html" aria-label="君安医疗科技首页"><img class="brand-mark" src="assets/images/brand-logo.png" alt="君安医疗科技"><span>君安医疗科技<small>JUNAN MEDICAL TECHNOLOGY</small></span></a>
         <button class="menu-button" type="button" aria-label="打开导航" aria-expanded="false" data-menu-button><i></i><i></i><i></i></button>
         <nav class="site-nav" data-site-nav>${nav}</nav>
         <a class="header-phone" href="tel:${siteData.phone}">业务咨询<br><strong>${siteData.phone}</strong></a>
@@ -79,7 +79,7 @@ function renderShell() {
   document.querySelector('[data-site-footer]').innerHTML = `
     <footer class="site-footer">
       <div class="shell footer-grid">
-        <div><a class="brand footer-brand" href="index.html"><span class="brand-mark">J</span><span>君安医疗科技<small>JUNAN MEDICAL TECHNOLOGY</small></span></a><p>面向中医药产业的数字化服务与质量协同支持。</p></div>
+        <div><a class="brand footer-brand" href="index.html"><img class="brand-mark" src="assets/images/brand-logo.png" alt="君安医疗科技"><span>君安医疗科技<small>JUNAN MEDICAL TECHNOLOGY</small></span></a><p>面向中医药产业的数字化服务与质量协同支持。</p></div>
         <div><h3>服务方向</h3><a href="solutions.html">基地数字化管理</a><a href="solutions.html">质量追溯</a><a href="solutions.html">产业协同</a></div>
         <div><h3>联系我们</h3><a href="tel:${siteData.phone}">${siteData.phone}</a><p>${siteData.address}</p></div>
       </div>
